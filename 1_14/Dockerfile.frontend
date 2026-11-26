@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y curl && \
 
 COPY 1_12 .
 
-RUN npm install && npm run build && npm install -g serve
+RUN npm install
+
+ARG REACT_APP_BACKEND_URL
+RUN REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL npm run build && npm install -g serve
 
 CMD ["serve", "-s", "-l", "5001", "build"]
