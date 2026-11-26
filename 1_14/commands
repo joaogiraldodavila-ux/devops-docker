@@ -1,0 +1,4 @@
+docker build --build-arg REACT_APP_BACKEND_URL=http://localhost:8080 -t frontend -f Dockerfile.frontend ..
+docker build -t backend -f Dockerfile.backend ..
+docker run -d -p 8080:8080 -e REQUEST_ORIGIN=http://localhost:5001 --name backend-114 backend
+docker run -d -p 5001:5001 --name frontend-114 frontend
